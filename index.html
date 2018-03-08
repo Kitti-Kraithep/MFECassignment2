@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>WebAssignment</title>
+  <link rel='stylesheet prefetch' href='http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css'>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+  <h1>Show call charge from .json file</h1>
+  <div class="container">
+    <div class="form-group">
+      <input type="file" class="file" id="myfile">
+      <div class="input-group col-xs-12">
+        <span class="input-group-addon"><i class="glyphicon glyphicon-file"></i></span>
+        <input type="text" class="form-control input-lg" disabled placeholder="Upload .json file">
+        <span class="input-group-btn">
+          <button class="browse btn btn-primary input-lg" type="button"><i class="glyphicon glyphicon-search"></i> Browse</button>
+        </span>
+      </div>
+    </div>
+    <div class="table-responsive">
+      <table class="table" id="myTable">
+          <thead>
+            <tr>
+              <th>Mobile number</th>
+              <th>Call charge (฿)</th>
+            </tr>
+          </thead>
+              <tbody id="myBody">
+              </tbody>
+          </table>   
+    </div>                                
+  </div>
+  <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.0/jquery.min.js'></script>
+  <script src='http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js'></script>
+  <script  src="js/index.js"></script>
+
+  <script type="text/javascript">
+    $("#myfile").on('change',function(){
+        var file = document.getElementById('myfile').files[0];
+        var reader = new FileReader();
+        reader.readAsText(file, 'UTF-8');
+        reader.onload = function(evt) {
+        var myobj = JSON.parse(evt.target.result);
+        $(myobj).each(function(i, person) {
+          $('<tr/>').appendTo($('#myBody'))
+            .append($('<td/>').text(person.number))
+            .append($('<td/>').text((person.service).toFixed(4)));
+          });
+        }
+    })
+  </script>
+</body>
+</html>

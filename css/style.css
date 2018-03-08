@@ -1,0 +1,33 @@
+.file {
+  visibility: hidden;
+  position: absolute;
+}
+
+body {
+  background-color: #c6c4c4;
+  margin: 50px;
+}
+
+.container {
+  background-color: #fff;
+  padding: 40px 120px;
+  border-radius: 8px;
+}
+
+h1 {
+  color: #000;
+  text-align: center;
+  font-size: 4rem;
+  font-weight: 900;
+  margin: 0 0 20px 0;
+}
+
+.btn.btn-primary {
+  background-color: #000;
+  border-color: #000;
+  outline: none;
+}
+.btn.btn-primary:hover {
+  background-color: #c6c4c4;
+  border-color: #c6c4c4;
+}
